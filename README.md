@@ -9,6 +9,15 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+```swift
+func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("ReuseIdentifier", classForCell: CustomCell.self) {
+        $0.customValue = 0
+    }
+    return cell!
+}
+```
+
 ## Requirements
 
 ## Installation

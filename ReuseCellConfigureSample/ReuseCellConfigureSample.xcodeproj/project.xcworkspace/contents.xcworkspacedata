@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ReuseCellConfigure.xcodeproj">
+      location = "self:ReuseCellConfigureSample.xcodeproj">
    </FileRef>
 </Workspace>

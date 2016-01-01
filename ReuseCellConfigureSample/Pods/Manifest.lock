@@ -1,0 +1,14 @@
+PODS:
+  - ReuseCellConfigure (0.1.0)
+
+DEPENDENCIES:
+  - ReuseCellConfigure (from `../`)
+
+EXTERNAL SOURCES:
+  ReuseCellConfigure:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ReuseCellConfigure: db326a30146337e0755d79dcccab89202b2d2080
+
+COCOAPODS: 0.39.0

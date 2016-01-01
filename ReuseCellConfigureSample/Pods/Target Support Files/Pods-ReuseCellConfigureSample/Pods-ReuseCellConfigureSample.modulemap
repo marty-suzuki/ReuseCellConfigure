@@ -1,0 +1,6 @@
+framework module Pods_ReuseCellConfigureSample {
+  umbrella header "Pods-ReuseCellConfigureSample-umbrella.h"
+
+  export *
+  module * { export * }
+}
