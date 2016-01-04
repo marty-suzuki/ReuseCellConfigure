@@ -22,3 +22,12 @@ public extension UITableView {
         return cell
     }
 }
+
+public extension UICollectionView {
+    public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, configure: T -> Void) -> UICollectionViewCell {
+        let reusableCell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+        guard let cell = reusableCell as? T else { return reusableCell }
+        configure(cell)
+        return cell
+    }
+}
