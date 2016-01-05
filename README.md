@@ -1,12 +1,19 @@
 # ReuseCellConfigure
 
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+)](https://developer.apple.com/iphone/index.action)
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+)](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
 [![License](https://img.shields.io/cocoapods/l/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
-[![Platform](https://img.shields.io/cocoapods/p/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
+
+You can configure ReusableCell without casting!
 
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+If you install from pod, you have to write `import ReuseCellConfigure`.
 
 ```swift
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -30,6 +37,9 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 ```
 
 ## Requirements
+
+- Xcode 7.0 or greater
+- iOS 8.0 or greater
 
 ## Installation
 
