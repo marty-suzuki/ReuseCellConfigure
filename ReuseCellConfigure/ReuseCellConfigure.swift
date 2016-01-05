@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: - UITableView Extension
 public extension UITableView {
     public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, classForCell: T.Type, configure: T -> Void) -> T? {
         guard let cell = dequeueReusableCellWithIdentifier(identifier) as? T else { return nil }
@@ -23,6 +24,7 @@ public extension UITableView {
     }
 }
 
+//MARK: - UICollectionView Extension
 public extension UICollectionView {
     public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, configure: T -> Void) -> UICollectionViewCell {
         let reusableCell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
