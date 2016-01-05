@@ -8,17 +8,13 @@
 
 import UIKit
 
-class RightIconTableViewCell: UITableViewCell {
+class RightIconTableViewCell: UITableViewCell, TableViewCellProtocol {
 
+    @IBOutlet weak var alphabetLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        addCornerRadius(30)
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

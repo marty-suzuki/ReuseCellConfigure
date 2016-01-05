@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A2793E1C3C203A00691403 /* TableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A2793D1C3C203A00691403 /* TableViewCellProtocol.swift */; };
 		45659A75D94BA8AA78BA4964 /* Pods_ReuseCellConfigureSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C170A42C31AA0FC9FA1942 /* Pods_ReuseCellConfigureSample.framework */; };
 		9D1D2AF81C36D169006A4E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D2AF71C36D169006A4E62 /* AppDelegate.swift */; };
 		9D1D2AFA1C36D169006A4E62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D2AF91C36D169006A4E62 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		240C9DCC2421377C296F6CE2 /* Pods-ReuseCellConfigureSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReuseCellConfigureSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReuseCellConfigureSample/Pods-ReuseCellConfigureSample.debug.xcconfig"; sourceTree = "<group>"; };
+		37A2793D1C3C203A00691403 /* TableViewCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellProtocol.swift; sourceTree = "<group>"; };
 		3D08F1EFF677A240727CB913 /* Pods-ReuseCellConfigureSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReuseCellConfigureSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReuseCellConfigureSample/Pods-ReuseCellConfigureSample.release.xcconfig"; sourceTree = "<group>"; };
 		9D1D2AF41C36D169006A4E62 /* ReuseCellConfigureSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReuseCellConfigureSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1D2AF71C36D169006A4E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		9D1D2B141C3BD830006A4E62 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				37A2793D1C3C203A00691403 /* TableViewCellProtocol.swift */,
 				9D1D2B191C3BDA89006A4E62 /* LeftIconTableViewCell.swift */,
 				9D1D2B1A1C3BDA89006A4E62 /* LeftIconTableViewCell.xib */,
 				9D1D2B1D1C3BDA9F006A4E62 /* RightIconTableViewCell.swift */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A2793E1C3C203A00691403 /* TableViewCellProtocol.swift in Sources */,
 				9D1D2B161C3BD955006A4E62 /* CollectionViewController.swift in Sources */,
 				9D1D2AFA1C36D169006A4E62 /* ViewController.swift in Sources */,
 				9D1D2AF81C36D169006A4E62 /* AppDelegate.swift in Sources */,

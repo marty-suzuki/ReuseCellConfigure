@@ -1,6 +1,5 @@
 # ReuseCellConfigure
 
-[![CI Status](http://img.shields.io/travis/suzuki-taiki/ReuseCellConfigure.svg?style=flat)](https://travis-ci.org/suzuki-taiki/ReuseCellConfigure)
 [![Version](https://img.shields.io/cocoapods/v/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
 [![License](https://img.shields.io/cocoapods/l/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
 [![Platform](https://img.shields.io/cocoapods/p/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
@@ -11,8 +10,20 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ```swift
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("ReuseIdentifier", classForCell: CustomCell.self) {
-        $0.customValue = 0
+    let cell: UITableViewCell?
+    let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
+    switch indexPath.row % 2 {
+        case 0:
+            cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell", classForCell: LeftIconTableViewCell.self) {
+                $0.alphabetLabel.text = alphabet
+                $0.randomBackgoundColor()
+            }
+        case 1:
+            cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell", classForCell: RightIconTableViewCell.self) {
+                $0.alphabetLabel.text = alphabet
+            }
+        default:
+            cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
     }
     return cell!
 }
@@ -31,7 +42,7 @@ pod "ReuseCellConfigure"
 
 ## Author
 
-suzuki-taiki, suzuki_taiki@cyberagent.co.jp
+Taiki Suzuki, s1180183@gmail.com
 
 ## License
 
