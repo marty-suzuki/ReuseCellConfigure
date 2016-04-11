@@ -5,6 +5,7 @@
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
 )](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/ReuseCellConfigure.svg?style=flat)](http://cocoapods.org/pods/ReuseCellConfigure)
 
 You can configure ReusableCell without casting!
@@ -43,12 +44,24 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 
 ## Installation
 
+#### CocoaPods
+
 ReuseCellConfigure is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "ReuseCellConfigure"
 ```
+
+#### Carthage
+
+If you’re using [Carthage](https://github.com/Carthage/Carthage), simply add
+ReuseCellConfigure to your `Cartfile`:
+
+```
+github "szk-atmosphere/ReuseCellConfigure"
+```
+Make sure to add `ReuseCellConfigure.framework` to "Linked Frameworks and Libraries" and "copy-frameworks" Build Phases.
 
 ## Author
 
