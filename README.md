@@ -19,36 +19,36 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 If you install from pod, you have to write `import ReuseCellConfigure`.
 
 ```swift
-func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: UITableViewCell?
     let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
     switch indexPath.row % 2 {
         case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell", classForCell: LeftIconTableViewCell.self) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell", to: LeftIconTableViewCell.self) {
                 $0.alphabetLabel.text = alphabet
                 $0.randomBackgoundColor()
             }
         case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell", classForCell: RightIconTableViewCell.self) {
+            cell = tableView.dequeueReusableCell(withIdentifier: "RightIconTableViewCell", to: RightIconTableViewCell.self) {
                 $0.alphabetLabel.text = alphabet
             }
         default:
-            cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")
     }
     return cell!
 }
 ```
 
 ```swift
-func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let reusableView: UICollectionReusableView? = nil
     switch UICollectionView.ElementKind(rawValue: kind) {
         case .Some(.Header):
-            return collectionView.dequeueReusableSupplementaryViewOfKind(.Header, withReuseIdentifier: "Header", forIndexPath: indexPath, classForView: ReusableHeaderView.self) {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: .Header, withReuseIdentifier: "Header", for: indexPath, to: ReusableHeaderView.self) {
                 $0.backgroundColor = .redColor()
             }
         case .Some(.Footer):
-            return collectionView.dequeueReusableSupplementaryViewOfKind(.Footer, withReuseIdentifier: "Footer", forIndexPath: indexPath, classForView: ReusableFooterView.self) {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: .Footer, withReuseIdentifier: "Footer", for: indexPath, to: ReusableFooterView.self) {
                 $0.backgroundColor = .blueColor()
             }
         default:
@@ -59,7 +59,7 @@ func collectionView(collectionView: UICollectionView, viewForSupplementaryElemen
 
 ## Requirements
 
-- Xcode 7.0 or greater
+- Xcode 8.0beta or greater
 - iOS 8.0 or greater
 
 ## Installation
@@ -70,7 +70,7 @@ ReuseCellConfigure is available through [CocoaPods](http://cocoapods.org). To in
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "ReuseCellConfigure"
+pod "ReuseCellConfigure", :git => 'https://github.com/szk-atmosphere/ReuseCellConfigure.git', :tag => '0.3.0-beta'
 ```
 
 #### Carthage
@@ -79,7 +79,7 @@ If you’re using [Carthage](https://github.com/Carthage/Carthage), simply add
 ReuseCellConfigure to your `Cartfile`:
 
 ```
-github "szk-atmosphere/ReuseCellConfigure"
+github "szk-atmosphere/ReuseCellConfigure" "0.3.0-beta"
 ```
 Make sure to add `ReuseCellConfigure.framework` to "Linked Frameworks and Libraries" and "copy-frameworks" Build Phases.
 
