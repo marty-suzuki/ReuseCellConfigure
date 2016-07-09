@@ -26,6 +26,45 @@ public extension UITableView {
 
 //MARK: - UICollectionView Extension
 public extension UICollectionView {
+    public enum ElementKind {
+        case Header
+        case Footer
+        
+        init?(rawValue: String) {
+            switch rawValue {
+            case UICollectionElementKindSectionHeader: self = .Header
+            case UICollectionElementKindSectionFooter: self = .Footer
+            default: return nil
+            }
+        }
+        
+        var value: String {
+            switch self {
+            case .Header: return UICollectionElementKindSectionHeader
+            case .Footer: return UICollectionElementKindSectionFooter
+            }
+        }
+    }
+    
+    public func registerNib(nib: UINib?, forSupplementaryViewOfKind kind: ElementKind, withReuseIdentifier identifier: String) {
+        registerNib(nib, forSupplementaryViewOfKind: kind.value, withReuseIdentifier: identifier)
+    }
+    
+    public func registerClass(viewClass: AnyClass?, forSupplementaryViewOfKind elementKind: ElementKind, withReuseIdentifier identifier: String) {
+        registerClass(viewClass, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: identifier)
+    }
+    
+    public func dequeueReusableSupplementaryViewOfKind(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        return dequeueReusableSupplementaryViewOfKind(elementKind.value, withReuseIdentifier: identifier, forIndexPath: indexPath)
+    }
+    
+    public func dequeueReusableSupplementaryViewOfKind<T where T: UICollectionReusableView>(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath, classForView: T.Type, @noescape configure: T -> Void) -> UICollectionReusableView {
+        let reusableView = dequeueReusableSupplementaryViewOfKind(elementKind, withReuseIdentifier: identifier, forIndexPath: indexPath)
+        guard let view = reusableView as? T else { return reusableView }
+        configure(view)
+        return view
+    }
+    
     public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, @noescape configure: T -> Void) -> UICollectionViewCell {
         let reusableCell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
         guard let cell = reusableCell as? T else { return reusableCell }
