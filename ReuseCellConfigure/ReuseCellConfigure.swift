@@ -51,7 +51,7 @@ public extension UICollectionView {
     }
     
     public func registerClass(viewClass: AnyClass?, forSupplementaryViewOfKind elementKind: ElementKind, withReuseIdentifier identifier: String) {
-        registerClass(viewClass, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: identifier)
+        registerClass(viewClass, forSupplementaryViewOfKind: elementKind.value, withReuseIdentifier: identifier)
     }
     
     public func dequeueReusableSupplementaryViewOfKind(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
