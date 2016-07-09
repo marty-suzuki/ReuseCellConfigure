@@ -10,11 +10,11 @@ import UIKit
 
 protocol TableViewCellProtocol: class {
     weak var alphabetLabel: UILabel! { get set }
-    func addCornerRadius(cornerRadius: CGFloat)
+    func addCornerRadius(_ cornerRadius: CGFloat)
 }
 
 extension TableViewCellProtocol {
-    func addCornerRadius(cornerRadius: CGFloat) {
+    func addCornerRadius(_ cornerRadius: CGFloat) {
         alphabetLabel.layer.cornerRadius = cornerRadius
         alphabetLabel.layer.masksToBounds = true
     }

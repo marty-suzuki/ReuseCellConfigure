@@ -17,9 +17,9 @@ class CollectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
-        collectionView.registerNib(UINib(nibName: "LeftCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LeftCollectionViewCell")
-        collectionView.registerNib(UINib(nibName: "RightCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RightCollectionViewCell")
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        collectionView.register(UINib(nibName: "LeftCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LeftCollectionViewCell")
+        collectionView.register(UINib(nibName: "RightCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RightCollectionViewCell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,25 +29,25 @@ class CollectionViewController: UIViewController {
 }
 
 extension CollectionViewController: UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int("Z".unicodeScalars.first!.value - "A".unicodeScalars.first!.value) + 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
         let cell: UICollectionViewCell
-        switch indexPath.row % 2 {
+        switch (indexPath as NSIndexPath).row % 2 {
             case 0:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier("LeftCollectionViewCell", forIndexPath: indexPath, classForCell: LeftCollectionViewCell.self) {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftCollectionViewCell", for: indexPath, to: LeftCollectionViewCell.self) {
                     $0.alphabetLabel.text = alphabet
                     $0.randomBackgoundColor()
                 }
             case 1:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier("RightCollectionViewCell", forIndexPath: indexPath, classForCell: RightCollectionViewCell.self) {
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionViewCell", for: indexPath, to: RightCollectionViewCell.self) {
                     $0.alphabetLabel.text = alphabet
                 }
             default:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath)
+                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
         }
         return cell
     }

@@ -19,9 +19,9 @@ class TableViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerNib(UINib(nibName: "LeftIconTableViewCell", bundle: nil), forCellReuseIdentifier: "LeftIconTableViewCell")
-        tableView.registerNib(UINib(nibName: "RightIconTableViewCell", bundle: nil), forCellReuseIdentifier: "RightIconTableViewCell")
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableView.register(UINib(nibName: "LeftIconTableViewCell", bundle: nil), forCellReuseIdentifier: "LeftIconTableViewCell")
+        tableView.register(UINib(nibName: "RightIconTableViewCell", bundle: nil), forCellReuseIdentifier: "RightIconTableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,32 +31,32 @@ class TableViewController: UIViewController {
 }
 
 extension TableViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int("Z".unicodeScalars.first!.value - "A".unicodeScalars.first!.value) + 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell?
-        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
-        switch indexPath.row % 2 {
+        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
+        switch (indexPath as NSIndexPath).row % 2 {
             case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell", classForCell: LeftIconTableViewCell.self) {
+                cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell", to: LeftIconTableViewCell.self) {
                     $0.alphabetLabel.text = alphabet
                     $0.randomBackgoundColor()
                 }
             case 1:
-                cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell", classForCell: RightIconTableViewCell.self) {
+                cell = tableView.dequeueReusableCell(withIdentifier: "RightIconTableViewCell", to: RightIconTableViewCell.self) {
                     $0.alphabetLabel.text = alphabet
                 }
             default:
-                cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
+                cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")
         }
         return cell!
     }
 }
 
 extension TableViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 }
