@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ReuseCellConfigure"
-  s.version          = "0.1.1"
+  s.version          = "0.2.2"
   s.summary          = "You can configure ReusableCell without casting!"
 
   s.homepage         = "https://github.com/szk-atmosphere/ReuseCellConfigure"

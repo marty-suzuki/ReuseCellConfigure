@@ -10,6 +10,8 @@
 
 You can configure ReusableCell without casting!
 
+Support Swift3 (If you want to use it in Swift3, please use [0.3.0-beta](https://github.com/szk-atmosphere/ReuseCellConfigure/tree/0.3.0-beta))
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -34,6 +36,24 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
             cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
     }
     return cell!
+}
+```
+
+```swift
+func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    let reusableView: UICollectionReusableView? = nil
+    switch UICollectionView.ElementKind(rawValue: kind) {
+        case .Some(.Header):
+            return collectionView.dequeueReusableSupplementaryViewOfKind(.Header, withReuseIdentifier: "Header", forIndexPath: indexPath, classForView: ReusableHeaderView.self) {
+                $0.backgroundColor = .redColor()
+            }
+        case .Some(.Footer):
+            return collectionView.dequeueReusableSupplementaryViewOfKind(.Footer, withReuseIdentifier: "Footer", forIndexPath: indexPath, classForView: ReusableFooterView.self) {
+                $0.backgroundColor = .blueColor()
+            }
+        default:
+            return reusableView
+    }
 }
 ```
 

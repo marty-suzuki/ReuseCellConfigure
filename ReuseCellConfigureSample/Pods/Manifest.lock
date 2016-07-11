@@ -1,14 +1,14 @@
 PODS:
-  - ReuseCellConfigure (0.1.0)
+  - ReuseCellConfigure (0.2.0)
 
 DEPENDENCIES:
   - ReuseCellConfigure (from `../`)
 
 EXTERNAL SOURCES:
   ReuseCellConfigure:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  ReuseCellConfigure: db326a30146337e0755d79dcccab89202b2d2080
+  ReuseCellConfigure: 9e7a1e4237d2da8bc32f90d6e98d53d3c7ac5246
 
 COCOAPODS: 0.39.0
