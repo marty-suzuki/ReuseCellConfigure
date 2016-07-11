@@ -30,7 +30,7 @@ public extension UICollectionView {
         case header
         case footer
         
-        init?(rawValue: String) {
+        public init?(rawValue: String) {
             switch rawValue {
             case UICollectionElementKindSectionHeader: self = .header
             case UICollectionElementKindSectionFooter: self = .footer
@@ -38,7 +38,7 @@ public extension UICollectionView {
             }
         }
         
-        var value: String {
+        public var value: String {
             switch self {
             case .header: return UICollectionElementKindSectionHeader
             case .footer: return UICollectionElementKindSectionFooter
