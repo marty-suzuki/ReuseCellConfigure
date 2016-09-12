@@ -37,7 +37,7 @@ extension TableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell?
-        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
+        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
         switch (indexPath as NSIndexPath).row % 2 {
             case 0:
                 cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell", to: LeftIconTableViewCell.self) {

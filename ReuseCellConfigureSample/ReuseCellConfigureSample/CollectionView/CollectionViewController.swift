@@ -34,7 +34,7 @@ extension CollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
+        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
         let cell: UICollectionViewCell
         switch (indexPath as NSIndexPath).row % 2 {
             case 0:
