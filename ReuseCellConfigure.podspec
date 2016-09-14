@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
   s.version          = "0.3.0"
   s.summary          = "You can configure ReusableCell without casting!"
 
-  s.homepage         = "https://github.com/szk-atmosphere/ReuseCellConfigure"
+  s.homepage         = "https://github.com/marty-suzuki/ReuseCellConfigure"
   s.license          = 'MIT'
   s.author           = { "Taiki Suzuki" => "s1180183@gmail.com" }
-  s.source           = { :git => "https://github.com/szk-atmosphere/ReuseCellConfigure.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/SzkAtmosphere'
+  s.source           = { :git => "https://github.com/marty-suzuki/ReuseCellConfigure.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/marty_suzuki'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true

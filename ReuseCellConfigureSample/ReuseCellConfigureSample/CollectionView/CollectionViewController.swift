@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReuseCellConfigure
 
 class CollectionViewController: UIViewController {
 
@@ -34,20 +35,20 @@ extension CollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
+        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row))!)
         let cell: UICollectionViewCell
-        switch (indexPath as NSIndexPath).row % 2 {
-            case 0:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftCollectionViewCell", for: indexPath, to: LeftCollectionViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                    $0.randomBackgoundColor()
-                }
-            case 1:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionViewCell", for: indexPath, to: RightCollectionViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                }
-            default:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+        switch indexPath.row % 2 {
+        case 0:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftCollectionViewCell", for: indexPath) { (cell: LeftCollectionViewCell) in
+                cell.alphabetLabel.text = alphabet
+                cell.randomBackgoundColor()
+            }
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionViewCell", for: indexPath) { (cell :RightCollectionViewCell) in
+                cell.alphabetLabel.text = alphabet
+            }
+        default:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
         }
         return cell
     }

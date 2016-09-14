@@ -37,19 +37,19 @@ extension TableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell?
-        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32((indexPath as NSIndexPath).row)))
-        switch (indexPath as NSIndexPath).row % 2 {
-            case 0:
-                cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell", to: LeftIconTableViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                    $0.randomBackgoundColor()
-                }
-            case 1:
-                cell = tableView.dequeueReusableCell(withIdentifier: "RightIconTableViewCell", to: RightIconTableViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                }
-            default:
-                cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")
+        let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row))!)
+        switch indexPath.row % 2 {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell") { (cell: LeftIconTableViewCell) in
+                cell.alphabetLabel.text = alphabet
+                cell.randomBackgoundColor()
+            }
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "RightIconTableViewCell") { (cell: RightIconTableViewCell) in
+                cell.alphabetLabel.text = alphabet
+            }
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")
         }
         return cell!
     }
