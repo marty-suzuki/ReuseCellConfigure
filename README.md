@@ -10,7 +10,7 @@
 
 You can configure ReusableCell without casting!
 
-Support Swift3 (If you want to use it in Swift3, please use [0.3.0-beta](https://github.com/szk-atmosphere/ReuseCellConfigure/tree/0.3.0-beta))
+Support Swift3 (If you want to use it in Swift3, please use [0.3.0-beta](https://github.com/marty-suzuki/ReuseCellConfigure/tree/0.3.0-beta))
 
 ## Usage
 
@@ -24,13 +24,13 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
     switch indexPath.row % 2 {
         case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell", classForCell: LeftIconTableViewCell.self) {
-                $0.alphabetLabel.text = alphabet
-                $0.randomBackgoundColor()
+            cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell") { (cell: LeftIconTableViewCell) in
+                cell.alphabetLabel.text = alphabet
+                cell.randomBackgoundColor()
             }
         case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell", classForCell: RightIconTableViewCell.self) {
-                $0.alphabetLabel.text = alphabet
+            cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell") { (cell: RightIconTableViewCell) in
+                cell.alphabetLabel.text = alphabet
             }
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
@@ -44,17 +44,41 @@ func collectionView(collectionView: UICollectionView, viewForSupplementaryElemen
     let reusableView: UICollectionReusableView? = nil
     switch UICollectionView.ElementKind(rawValue: kind) {
         case .Some(.Header):
-            return collectionView.dequeueReusableSupplementaryViewOfKind(.Header, withReuseIdentifier: "Header", forIndexPath: indexPath, classForView: ReusableHeaderView.self) {
-                $0.backgroundColor = .redColor()
+            return collectionView.dequeueReusableSupplementaryViewOfKind(.Header, withReuseIdentifier: "Header", forIndexPath: indexPath) { (view: ReusableHeaderView) in
+                view.backgroundColor = .redColor()
             }
         case .Some(.Footer):
-            return collectionView.dequeueReusableSupplementaryViewOfKind(.Footer, withReuseIdentifier: "Footer", forIndexPath: indexPath, classForView: ReusableFooterView.self) {
-                $0.backgroundColor = .blueColor()
+            return collectionView.dequeueReusableSupplementaryViewOfKind(.Footer, withReuseIdentifier: "Footer", forIndexPath: indexPath) { (view: ReusableFooterView) in
+                view.backgroundColor = .blueColor()
             }
         default:
             return reusableView
     }
 }
+```
+
+## Deprecated methods
+
+Those methods are deprecated since 0.2.3
+
+#### UITableView
+
+```swift
+@available(*, deprecated=7.0, message="use \"dequeueReusableCellWithIdentifier(_:configure:)\"")
+public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, classForCell: T.Type, @noescape configure: T -> Void) -> T?
+
+@available(*, deprecated=7.0, message="use \"dequeueReusableCellWithIdentifier(_:forIndexPath:configure:)\"")
+public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, @noescape configure: T -> Void) -> UITableViewCell
+```
+
+#### UICollectionView
+
+```swift
+@available(*, deprecated=7.0, message="use \"dequeueReusableSupplementaryViewOfKind(_:withReuseIdentifier:forIndexPath:configure:)\"")
+public func dequeueReusableSupplementaryViewOfKind<T where T: UICollectionReusableView>(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath, classForView: T.Type, @noescape configure: T -> Void) -> UICollectionReusableView
+
+@available(*, deprecated=7.0, message="use \"dequeueReusableCellWithReuseIdentifier(_:forIndexPath:configure:)\"")
+public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, @noescape configure: T -> Void) -> UICollectionViewCell
 ```
 
 ## Requirements
@@ -79,7 +103,7 @@ If you’re using [Carthage](https://github.com/Carthage/Carthage), simply add
 ReuseCellConfigure to your `Cartfile`:
 
 ```
-github "szk-atmosphere/ReuseCellConfigure"
+github "marty-suzuki/ReuseCellConfigure"
 ```
 Make sure to add `ReuseCellConfigure.framework` to "Linked Frameworks and Libraries" and "copy-frameworks" Build Phases.
 

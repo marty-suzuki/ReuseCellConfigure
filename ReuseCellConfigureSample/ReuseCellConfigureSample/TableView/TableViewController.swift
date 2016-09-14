@@ -40,13 +40,13 @@ extension TableViewController: UITableViewDataSource {
         let alphabet = String(UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row)))
         switch indexPath.row % 2 {
             case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell", classForCell: LeftIconTableViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                    $0.randomBackgoundColor()
+                cell = tableView.dequeueReusableCellWithIdentifier("LeftIconTableViewCell") { (cell: LeftIconTableViewCell) in
+                    cell.alphabetLabel.text = alphabet
+                    cell.randomBackgoundColor()
                 }
             case 1:
-                cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell", classForCell: RightIconTableViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
+                cell = tableView.dequeueReusableCellWithIdentifier("RightIconTableViewCell") { (cell: RightIconTableViewCell) in
+                    cell.alphabetLabel.text = alphabet
                 }
             default:
                 cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
