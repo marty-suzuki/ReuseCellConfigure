@@ -38,13 +38,13 @@ extension CollectionViewController: UICollectionViewDataSource {
         let cell: UICollectionViewCell
         switch indexPath.row % 2 {
             case 0:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier("LeftCollectionViewCell", forIndexPath: indexPath, classForCell: LeftCollectionViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
-                    $0.randomBackgoundColor()
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier("LeftCollectionViewCell", forIndexPath: indexPath) { (cell: LeftCollectionViewCell) in
+                    cell.alphabetLabel.text = alphabet
+                    cell.randomBackgoundColor()
                 }
             case 1:
-                cell = collectionView.dequeueReusableCellWithReuseIdentifier("RightCollectionViewCell", forIndexPath: indexPath, classForCell: RightCollectionViewCell.self) {
-                    $0.alphabetLabel.text = alphabet
+                cell = collectionView.dequeueReusableCellWithReuseIdentifier("RightCollectionViewCell", forIndexPath: indexPath) { (cell :RightCollectionViewCell) in
+                    cell.alphabetLabel.text = alphabet
                 }
             default:
                 cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath)

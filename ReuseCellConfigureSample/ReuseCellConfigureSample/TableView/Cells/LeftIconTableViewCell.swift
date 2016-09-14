@@ -36,6 +36,6 @@ class LeftIconTableViewCell: UITableViewCell, TableViewCellProtocol {
     }
     
     private func randValue() -> CGFloat {
-        return CGFloat(random() % 255) / 255
+        return CGFloat(arc4random() % 255) / 255
     }
 }

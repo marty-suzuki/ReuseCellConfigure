@@ -10,13 +10,28 @@ import UIKit
 
 //MARK: - UITableView Extension
 public extension UITableView {
+    @available(*, deprecated=7.0, message="use \"dequeueReusableCellWithIdentifier(_:configure:)\"")
     public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, classForCell: T.Type, @noescape configure: T -> Void) -> T? {
         guard let cell = dequeueReusableCellWithIdentifier(identifier) as? T else { return nil }
         configure(cell)
         return cell
     }
     
+    public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, @noescape configure: T -> Void) -> T? {
+        guard let cell = dequeueReusableCellWithIdentifier(identifier) as? T else { return nil }
+        configure(cell)
+        return cell
+    }
+    
+    @available(*, deprecated=7.0, message="use \"dequeueReusableCellWithIdentifier(_:forIndexPath:configure:)\"")
     public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, @noescape configure: T -> Void) -> UITableViewCell {
+        let reusableCell = dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+        guard let cell = reusableCell as? T else { return reusableCell }
+        configure(cell)
+        return cell
+    }
+    
+    public func dequeueReusableCellWithIdentifier<T where T: UITableViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, @noescape configure: T -> Void) -> UITableViewCell {
         let reusableCell = dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
         guard let cell = reusableCell as? T else { return reusableCell }
         configure(cell)
@@ -58,6 +73,7 @@ public extension UICollectionView {
         return dequeueReusableSupplementaryViewOfKind(elementKind.value, withReuseIdentifier: identifier, forIndexPath: indexPath)
     }
     
+    @available(*, deprecated=7.0, message="use \"dequeueReusableSupplementaryViewOfKind(_:withReuseIdentifier:forIndexPath:configure:)\"")
     public func dequeueReusableSupplementaryViewOfKind<T where T: UICollectionReusableView>(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath, classForView: T.Type, @noescape configure: T -> Void) -> UICollectionReusableView {
         let reusableView = dequeueReusableSupplementaryViewOfKind(elementKind, withReuseIdentifier: identifier, forIndexPath: indexPath)
         guard let view = reusableView as? T else { return reusableView }
@@ -65,7 +81,22 @@ public extension UICollectionView {
         return view
     }
     
+    public func dequeueReusableSupplementaryViewOfKind<T where T: UICollectionReusableView>(elementKind: ElementKind, withReuseIdentifier identifier: String, forIndexPath indexPath: NSIndexPath, @noescape configure: T -> Void) -> UICollectionReusableView {
+        let reusableView = dequeueReusableSupplementaryViewOfKind(elementKind, withReuseIdentifier: identifier, forIndexPath: indexPath)
+        guard let view = reusableView as? T else { return reusableView }
+        configure(view)
+        return view
+    }
+    
+    @available(*, deprecated=7.0, message="use \"dequeueReusableCellWithReuseIdentifier(_:forIndexPath:configure:)\"")
     public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, classForCell: T.Type, @noescape configure: T -> Void) -> UICollectionViewCell {
+        let reusableCell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+        guard let cell = reusableCell as? T else { return reusableCell }
+        configure(cell)
+        return cell
+    }
+    
+    public func dequeueReusableCellWithReuseIdentifier<T where T: UICollectionViewCell>(identifier: String, forIndexPath indexPath: NSIndexPath, @noescape configure: T -> Void) -> UICollectionViewCell {
         let reusableCell = dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
         guard let cell = reusableCell as? T else { return reusableCell }
         configure(cell)
