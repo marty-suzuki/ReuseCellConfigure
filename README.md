@@ -92,7 +92,7 @@ ReuseCellConfigure is available through [CocoaPods](http://cocoapods.org). To in
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "ReuseCellConfigure", :git => 'https://github.com/szk-atmosphere/ReuseCellConfigure.git', :tag => '0.3.0-beta'
+pod "ReuseCellConfigure"
 ```
 
 #### Carthage

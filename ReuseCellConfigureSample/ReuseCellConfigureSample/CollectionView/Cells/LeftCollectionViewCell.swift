@@ -10,8 +10,8 @@ import UIKit
 
 class LeftCollectionViewCell: UICollectionViewCell, CollectionViewCellProtocol {
     @IBOutlet weak var alphabetLabel: UILabel!
-    private var color: UIColor?
-    private var inverseColor: UIColor?
+    fileprivate var color: UIColor?
+    fileprivate var inverseColor: UIColor?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +34,7 @@ class LeftCollectionViewCell: UICollectionViewCell, CollectionViewCellProtocol {
         alphabetLabel.textColor = color
     }
     
-    private func randValue() -> CGFloat {
+    fileprivate func randValue() -> CGFloat {
         return CGFloat(arc4random() % 255) / 255
     }
 }
