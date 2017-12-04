@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import ReuseCellConfigure
 
-class RightCollectionViewCell: UICollectionViewCell, CollectionViewCellProtocol {
+final class RightCollectionViewCell: UICollectionViewCell, ReusableViewProtocol, CollectionViewCellProtocol {
+    typealias RegisterType = RegisterNib
+
     @IBOutlet weak var alphabetLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         addCornerRadius(40)
     }
 }

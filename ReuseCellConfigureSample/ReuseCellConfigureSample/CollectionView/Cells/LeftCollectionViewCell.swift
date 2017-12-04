@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import ReuseCellConfigure
 
-class LeftCollectionViewCell: UICollectionViewCell, CollectionViewCellProtocol {
+final class LeftCollectionViewCell: UICollectionViewCell, ReusableViewProtocol, CollectionViewCellProtocol {
+    typealias RegisterType = RegisterNib
+
     @IBOutlet weak var alphabetLabel: UILabel!
     fileprivate var color: UIColor?
     fileprivate var inverseColor: UIColor?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         addCornerRadius(40)
     }
 

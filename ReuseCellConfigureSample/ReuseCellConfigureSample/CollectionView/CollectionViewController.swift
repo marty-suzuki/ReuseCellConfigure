@@ -9,23 +9,17 @@
 import UIKit
 import ReuseCellConfigure
 
-class CollectionViewController: UIViewController {
+final class CollectionViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "LeftCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LeftCollectionViewCell")
-        collectionView.register(UINib(nibName: "RightCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RightCollectionViewCell")
+        collectionView.register(with: LeftCollectionViewCell.self)
+        collectionView.register(with: RightCollectionViewCell.self)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -39,12 +33,12 @@ extension CollectionViewController: UICollectionViewDataSource {
         let cell: UICollectionViewCell
         switch indexPath.row % 2 {
         case 0:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftCollectionViewCell", for: indexPath) { (cell: LeftCollectionViewCell) in
+            cell = collectionView.dequeue(with: LeftCollectionViewCell.self, for: indexPath) { cell in
                 cell.alphabetLabel.text = alphabet
                 cell.randomBackgoundColor()
             }
         case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightCollectionViewCell", for: indexPath) { (cell :RightCollectionViewCell) in
+            cell = collectionView.dequeue(with: RightCollectionViewCell.self, for: indexPath) { cell in
                 cell.alphabetLabel.text = alphabet
             }
         default:

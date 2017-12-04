@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import ReuseCellConfigure
 
-class RightIconTableViewCell: UITableViewCell, TableViewCellProtocol {
+final class RightIconTableViewCell: UITableViewCell, ReusableViewProtocol, TableViewCellProtocol {
+    typealias RegisterType = RegisterNib
 
     @IBOutlet weak var alphabetLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         addCornerRadius(30)
     }
 }

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import ReuseCellConfigure
 
-class LeftIconTableViewCell: UITableViewCell, TableViewCellProtocol {
+final class LeftIconTableViewCell: UITableViewCell, ReusableViewProtocol, TableViewCellProtocol {
+    typealias RegisterType = RegisterNib
 
     @IBOutlet weak var alphabetLabel: UILabel!
     fileprivate var color: UIColor?
@@ -16,7 +18,7 @@ class LeftIconTableViewCell: UITableViewCell, TableViewCellProtocol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         addCornerRadius(30)
     }
     

@@ -9,24 +9,18 @@
 import UIKit
 import ReuseCellConfigure
 
-class TableViewController: UIViewController {
+final class TableViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "LeftIconTableViewCell", bundle: nil), forCellReuseIdentifier: "LeftIconTableViewCell")
-        tableView.register(UINib(nibName: "RightIconTableViewCell", bundle: nil), forCellReuseIdentifier: "RightIconTableViewCell")
+        tableView.register(with: LeftIconTableViewCell.self)
+        tableView.register(with: RightIconTableViewCell.self)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
@@ -40,12 +34,12 @@ extension TableViewController: UITableViewDataSource {
         let alphabet = String(describing: UnicodeScalar("A".unicodeScalars.first!.value + UInt32(indexPath.row))!)
         switch indexPath.row % 2 {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "LeftIconTableViewCell") { (cell: LeftIconTableViewCell) in
+            cell = tableView.dequeue(with: LeftIconTableViewCell.self) { cell in
                 cell.alphabetLabel.text = alphabet
                 cell.randomBackgoundColor()
             }
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "RightIconTableViewCell") { (cell: RightIconTableViewCell) in
+            cell = tableView.dequeue(with: RightIconTableViewCell.self) { cell in
                 cell.alphabetLabel.text = alphabet
             }
         default:
