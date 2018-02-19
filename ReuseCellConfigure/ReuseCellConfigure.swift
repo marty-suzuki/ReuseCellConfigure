@@ -16,7 +16,7 @@ public enum RegisterClass: ReusableViewRegisterType {}
 public protocol ReusableViewProtocol {
     associatedtype RegisterType: ReusableViewRegisterType
     static var identifier: String { get }
-    static var nib: UINib? { get }
+    static var originalNib: UINib? { get }
 }
 
 extension ReusableViewProtocol {
@@ -26,13 +26,17 @@ extension ReusableViewProtocol {
 }
 
 extension ReusableViewProtocol where RegisterType == RegisterNib {
-    public static var nib: UINib? {
-        return UINib(nibName: identifier, bundle: nil)
+    public static var originalNib: UINib? {
+        return nil
+    }
+
+    public static var nib: UINib {
+        return originalNib ?? UINib(nibName: identifier, bundle: nil)
     }
 }
 
 extension ReusableViewProtocol where RegisterType == RegisterClass {
-    public static var nib: UINib? {
+    public static var originalNib: UINib? {
         return nil
     }
 }
